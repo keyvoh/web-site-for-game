@@ -18,13 +18,6 @@
             background-size: auto 120%; /* adjust height to cover nicely */
             animation: bg-move 40s linear infinite;
         }
-        body {
-  background-image: url('wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 
         @keyframes bg-move{
             from { background-position: 0% 50%; }
@@ -53,22 +46,6 @@
 
         /* small screens */
         @media (max-width:600px){h1.title{font-size:clamp(22px,8vw,36px)}.hero{min-height:50vh}}
-
-        /* About & Contact styles */
-        .content-section{padding:2.5rem 1rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));}
-        .container{max-width:1000px;margin:0 auto}
-        .content-section h2{color:#fff;margin:0 0 .5rem;font-size:clamp(20px,4vw,28px)}
-        .content-section p{color:rgba(255,255,255,0.9);line-height:1.6}
-
-        /* Contact form */
-        #contact-form{margin-top:1rem;display:grid;gap:.75rem}
-        #contact-form label{display:block;color:#fff;font-weight:600}
-        #contact-form input,#contact-form textarea{width:100%;padding:.6rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:#fff}
-        #contact-form button{width:max-content}
-        .form-note{font-size:.85rem;opacity:.85;margin-top:.5rem;color:rgba(255,255,255,0.75)}
-        h2{margin-bottom:1rem;
-        font-size:clamp(22px,4vw,32px);font-weight:700;
-        }
     </style>
 </head>
 <body class="moving-bg">
@@ -92,54 +69,12 @@
         </div>
     </main>
 
-    <!-- Gaming banner -->
-    <div class="banner-wrap">
-        <img src="gaming-banner.svg" alt="PUBG PUNGWIN banner" class="banner">
-    </div>
-
     <section class="video-embed">
-        <h2 style="color:#131111">Watch the amazing gameplay</h2>
+        <h2 style="color:#111">Watch gameplay</h2>
         <div class="embed-responsive">
             <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="PUBG Mobile Gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
-
-    <!-- About & Contact -->
-    <section id="about" class="content-section">
-        <div class="container">
-            <h2>About PUBG PUNGWIN</h2>
-            <p>PUBG PUNGWIN is a mobile battle-royale experience bringing intense matches, realistic visuals and fast-paced action. Play solo or team up with friends — survive, loot, and be the last one standing.</p>
-            <ul>
-                <li>Fast matchmaking and ranked modes</li>
-                <li>Custom events and seasonal rewards</li>
-                <li>Optimized for mobile devices</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="contact" class="content-section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Have questions, partnership inquiries, or feedback? Use the form below or send an email to <a href="mailto:youremail@example.com" style="color:#fff;text-decoration:underline">youremail@example.com</a>.</p>
-
-            <!-- Simple mailto form: opens user's email client. For server-side handling, I can add a backend or connect to Formspree. -->
-            <form id="contact-form" action="mailto:youremail@example.com" method="post" enctype="text/plain">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" required>
-
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit" class="btn-download">Send Message</button>
-            </form>
-
-            <p class="form-note">Tip: If you'd like submissions saved on the server, I can add a backend endpoint or integrate Formspree so messages are emailed or stored.</p>
-        </div>
-    </section>
-
     <style>
         .btn-download{
             display:inline-block;
