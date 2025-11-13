@@ -69,9 +69,77 @@
         h2{margin-bottom:1rem;
         font-size:clamp(22px,4vw,32px);font-weight:700;
         }
+
+        /* Navigation bar styles */
+        .navbar{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(11,18,32,0.95));
+            backdrop-filter:blur(10px);
+            z-index:1000;
+            padding:0.8rem 1.5rem;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .navbar-logo{
+            font-size:clamp(18px,3vw,24px);
+            font-weight:800;
+            color:#fff;
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .navbar-links{
+            display:flex;
+            gap:1.5rem;
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .navbar-links a{
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+            font-size:clamp(13px,2vw,15px);
+            transition:color 0.2s ease, text-shadow 0.2s ease;
+        }
+        .navbar-links a:hover{
+            color:#ffcc00;
+            text-shadow:0 0 10px rgba(255,204,0,0.5);
+        }
+        .navbar-links .login-btn{
+            background:#0f9d58;
+            padding:0.5rem 1rem;
+            border-radius:6px;
+            transition:background 0.2s ease, transform 0.1s ease;
+        }
+        .navbar-links .login-btn:hover{
+            background:#0b8043;
+            transform:translateY(-2px);
+        }
+        /* Add top padding to body to account for fixed navbar */
+        body{padding-top:50px}
+        @media (max-width:600px){
+            .navbar{flex-direction:column;gap:0.8rem;padding:0.6rem}
+            .navbar-links{gap:0.8rem;flex-wrap:wrap;justify-content:center}
+        }
     </style>
 </head>
 <body class="moving-bg">
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <a href="PUBG MOBILE.html" class="navbar-logo">PUBG PUNGWIN</a>
+        <ul class="navbar-links">
+            <li><a href="PUBG%20MOBILE.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Login</a></li>
+        </ul>
+    </nav>
+
     <main class="hero">
         <!-- If you want a video background, place bg.mp4 next to this file and uncomment the video tag below. Video will appear above the body background. -->
         <!--

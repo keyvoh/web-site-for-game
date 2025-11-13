@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About PUBG PUNGWIN</title>
+    <style>
+        :root{ --overlay: rgba(0,0,0,0.35); }
+        *{box-sizing: border-box}
+        html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;color:#fff}
+
+        body{
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+            padding-top:60px;
+        }
+
+        /* Navigation bar styles */
+        .navbar{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(11,18,32,0.95));
+            backdrop-filter:blur(10px);
+            z-index:1000;
+            padding:0.8rem 1.5rem;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .navbar-logo{
+            font-size:clamp(18px,3vw,24px);
+            font-weight:800;
+            color:#fff;
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .navbar-links{
+            display:flex;
+            gap:1.5rem;
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .navbar-links a{
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+            font-size:clamp(13px,2vw,15px);
+            transition:color 0.2s ease, text-shadow 0.2s ease;
+        }
+        .navbar-links a:hover{
+            color:#ffcc00;
+            text-shadow:0 0 10px rgba(255,204,0,0.5);
+        }
+        .navbar-links .login-btn{
+            background:#0f9d58;
+            padding:0.5rem 1rem;
+            border-radius:6px;
+            transition:background 0.2s ease, transform 0.1s ease;
+        }
+        .navbar-links .login-btn:hover{
+            background:#0b8043;
+            transform:translateY(-2px);
+        }
+        @media (max-width:600px){
+            .navbar{flex-direction:column;gap:0.8rem;padding:0.6rem}
+            .navbar-links{gap:0.8rem;flex-wrap:wrap;justify-content:center}
+        }
+
+        /* Page content */
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:2rem 1rem;
+        }
+
+        .about-header{
+            text-align:center;
+            margin-bottom:3rem;
+        }
+
+        .about-header h1{
+            font-size:clamp(32px,6vw,48px);
+            font-weight:800;
+            margin:0 0 1rem;
+            text-transform:uppercase;
+            letter-spacing:2px;
+            text-shadow:0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        .about-header p{
+            font-size:clamp(16px,2.5vw,18px);
+            color:rgba(255,255,255,0.85);
+            margin:0;
+        }
+
+        .about-section{
+            background:rgba(255,255,255,0.05);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:12px;
+            padding:2rem;
+            margin-bottom:2rem;
+        }
+
+        .about-section h2{
+            font-size:clamp(24px,4vw,32px);
+            font-weight:700;
+            margin:0 0 1rem;
+            color:#ffcc00;
+        }
+
+        .about-section p, .about-section li{
+            font-size:clamp(14px,2vw,16px);
+            line-height:1.7;
+            color:rgba(255,255,255,0.9);
+            margin:0.5rem 0;
+        }
+
+        .about-section ul{
+            padding-left:1.5rem;
+            margin:1rem 0;
+        }
+
+        .about-section li{
+            margin:0.8rem 0;
+        }
+
+        .about-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+            gap:1.5rem;
+            margin-top:2rem;
+        }
+
+        .about-card{
+            background:rgba(15,157,88,0.15);
+            border:1px solid rgba(15,157,88,0.3);
+            border-radius:8px;
+            padding:1.5rem;
+            text-align:center;
+        }
+
+        .about-card h3{
+            font-size:clamp(18px,3vw,22px);
+            font-weight:700;
+            margin:0 0 0.5rem;
+            color:#0f9d58;
+        }
+
+        .about-card p{
+            margin:0;
+            color:rgba(255,255,255,0.85);
+            font-size:clamp(13px,1.8vw,14px);
+        }
+
+        .cta-section{
+            text-align:center;
+            margin-top:3rem;
+            padding:2rem;
+            background:linear-gradient(90deg, rgba(15,157,88,0.2), rgba(255,204,0,0.1));
+            border-radius:12px;
+            border:1px solid rgba(15,157,88,0.3);
+        }
+
+        .cta-section h2{
+            margin:0 0 1rem;
+            color:#fff;
+        }
+
+        .cta-btn{
+            display:inline-block;
+            background:linear-gradient(180deg, #0f9d58, #0b8043);
+            color:#fff;
+            padding:0.8rem 1.5rem;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:700;
+            transition:transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow:0 6px 18px rgba(11,128,67,0.24);
+        }
+
+        .cta-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 26px rgba(11,128,67,0.28);
+        }
+
+        @media (max-width:600px){
+            .container{padding:1rem}
+            .about-section{padding:1.5rem}
+            .about-grid{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <a href="PUBG MOBILE.html" class="navbar-logo">PUBG PUNGWIN</a>
+        <ul class="navbar-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="PUBG MOBILE.html#contact">Contact</a></li>
+            <li><a href="#login" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="about-header">
+            <h1>About PUBG PUNGWIN</h1>
+            <p>Experience the ultimate mobile battle-royale gaming</p>
+        </div>
+
+        <!-- What is PUBG PUNGWIN -->
+        <div class="about-section">
+            <h2>What is PUBG PUNGWIN?</h2>
+            <p>PUBG PUNGWIN is a fast-paced, action-packed mobile battle-royale game that brings intense competition and thrilling gameplay to your fingertips. Join millions of players worldwide and prove your skills in real-time matches.</p>
+            <p>Drop into stunning environments, loot weapons and gear, engage in tactical combat, and be the last team standing to claim victory. Every match is unique—every decision matters.</p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="about-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Fast Matchmaking:</strong> Jump into matches instantly with optimized server infrastructure</li>
+                <li><strong>Multiple Game Modes:</strong> Solo, Duo, Squad, and Team modes for every playstyle</li>
+                <li><strong>Realistic Graphics:</strong> Cutting-edge visuals optimized for smooth mobile performance</li>
+                <li><strong>Seasonal Events:</strong> Limited-time events and exclusive rewards keep gameplay fresh</li>
+                <li><strong>Customization:</strong> Personalize your character, weapons, and loadouts</li>
+                <li><strong>Cross-Platform:</strong> Play with friends across Android and iOS seamlessly</li>
+            </ul>
+        </div>
+
+        <!-- Why Choose PUBG PUNGWIN -->
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🎮 Competitive Gameplay</h3>
+                <p>Test your skills against players worldwide in ranked and casual modes</p>
+            </div>
+            <div class="about-card">
+                <h3>⚡ Optimized Performance</h3>
+                <p>Low latency servers and smooth gameplay on all device types</p>
+            </div>
+            <div class="about-card">
+                <h3>🏆 Rewarding Progression</h3>
+                <p>Earn rewards, unlock skins, and climb the ranked ladder</p>
+            </div>
+            <div class="about-card">
+                <h3>👥 Community Driven</h3>
+                <p>Join a vibrant community with regular tournaments and events</p>
+            </div>
+        </div>
+
+        <!-- Game Modes -->
+        <div class="about-section">
+            <h2>Game Modes</h2>
+            <p><strong>Classic Battle Royale:</strong> 100 players, last one standing wins. Drop anywhere, survive everywhere.</p>
+            <p><strong>Ranked Mode:</strong> Competitive ladder system with seasonal rewards and exclusive cosmetics.</p>
+            <p><strong>Team Warfare:</strong> Squad-based tactical combat with team-oriented objectives.</p>
+            <p><strong>Special Events:</strong> Limited-time modes with unique rules and epic rewards.</p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Jump In?</h2>
+            <p>Download PUBG PUNGWIN now and start your battle-royale journey.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank" class="cta-btn">Download on Google Play</a>
+        </div>
+    </div>
+</body>
+</html>
