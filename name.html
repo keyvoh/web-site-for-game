@@ -3,78 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Login</title>
+    <title>Contact & Login - PUBG PUNGWIN</title>
     <style>
+        :root{ --overlay: rgba(0,0,0,0.35); }
+        *{box-sizing: border-box}
+        html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;color:#fff}
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-image: url('wallpaper.jpg');
-            background-size:auto ;
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+            padding-top:60px;
         }
+         /* Navigation bar styles */
+        .navbar{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            background:linear-gradient(180deg, rgba(15,23,42,0.98), rgba(11,18,32,0.95));
+            backdrop-filter:blur(10px);
+            z-index:1000;
+            padding:0.8rem 1.5rem;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .navbar-logo{
+            font-size:clamp(18px,3vw,24px);
+            font-weight:800;
+            color:#fff;
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:1px;
+        }
+        .navbar-links{
+            display:flex;
+            gap:1.5rem;
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .navbar-links a{
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+            font-size:clamp(13px,2vw,15px);
+            transition:color 0.2s ease, text-shadow 0.2s ease;
+        }
+        .navbar-links a:hover{
+            color:#ffcc00;
+            text-shadow:0 0 10px rgba(255,204,0,0.5);
+        }
+        .navbar-links .login-btn{
+            background:#0f9d58;
+            padding:0.5rem 1rem;
+            border-radius:6px;
+            transition:background 0.2s ease, transform 0.1s ease;
+        }
+        .navbar-links .login-btn:hover{
+            background:#0b8043;
+            transform:translateY(-2px);
+        }
+        @media (max-width:600px){
+            .navbar{flex-direction:column;gap:0.8rem;padding:0.6rem}
+            .navbar-links{gap:0.8rem;flex-wrap:wrap;justify-content:center}
+        }
+
+        /* Page content */
         .container {
+            max-width:1000px;
+            margin:0 auto;
+            padding:2rem 1rem;
             display: flex;
-            gap: 30px;
+            gap: 2rem;
+            flex-wrap:wrap;
+            justify-content:center;
         }
         .section {
             flex: 1;
+            min-width:280px;
+            background:rgba(255,255,255,0.05);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:12px;
+            padding:2rem;
         }
+
+        .section h2{
+            font-size:clamp(24px,4vw,32px);
+            font-weight:700;
+            margin:0 0 1.5rem;
+            color:#ffcc00;
+        }
+
         form {
             display: flex;
             flex-direction: column;
         }
         label {
-            margin-top: 10px;
-            font-weight: bold;
+            margin-top: 1rem;
+            font-weight: 600;
+            color:#fff;
         }
         input, textarea {
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            background:rgba(255,255,255,0.03);
+            border-radius: 8px;
+            color:#fff;
+        }
+
+        input::placeholder, textarea::placeholder{
+            color:rgba(255,255,255,0.5);
         }
         button {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #007bff;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(180deg, #0f9d58, #0b8043);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight:700;
+            transition:transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow:0 6px 18px rgba(11,128,67,0.24);
         }
         button:hover {
-            background-color: #0056b3;
+            transform:translateY(-2px);
+            box-shadow:0 10px 26px rgba(11,128,67,0.28);
         }
           body{padding-top:50px}
         @media (max-width:600px){
-            .navbar{flex-direction:column;gap:0.8rem;padding:0.6rem}
-            .navbar-links{gap:0.8rem;flex-wrap:wrap;justify-content:center}
+            .container{flex-direction:column;align-items:center}
+            .section{width:100%;max-width:100%}
         }
-        
-        /* Contact form */
-        #contact-form{margin-top:1rem;display:grid;gap:.75rem}
-        #contact-form label{display:block;color:#fff;font-weight:600}
-        #contact-form input,#contact-form textarea{width:100%;padding:.6rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:#fff}
-        #contact-form button{width:max-content}
-        .form-note{font-size:.85rem;opacity:.85;margin-top:.5rem;color:rgba(255,255,255,0.75)}
-        h2{margin-bottom:1rem;
-        font-size:clamp(22px,4vw,32px);font-weight:700;
+        /* Footer */
+        .site-footer{
+            margin-top:2rem;
+            padding:1rem 1rem;
+            text-align:center;
+            background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.18));
+            border-top:1px solid rgba(255,255,255,0.04);
+            color:rgba(255,255,255,0.9);
+            font-size:0.95rem;
+            border-radius:8px;
         }
+        .site-footer a{color:#ffcc00;text-decoration:none;font-weight:600}
     </style>
 </head>
 <body>
-    <li><a href="PUBG%20MOBILE.html">Home</a></li>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <a href="PUBG MOBILE.html" class="navbar-logo">PUBG PUNGWIN</a>
+        <ul class="navbar-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="PUBG MOBILE.html">Home</a></li>
+            <li><a href="name.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <!-- Login Section -->
         <div class="section">
             <h2>Login</h2>
             <form>
                 <label>Email:</label>
-                <input type="email" required>
+                <input type="email" placeholder="Enter your email" required>
                 <label>Password:</label>
-                <input type="password" required>
+                <input type="password" placeholder="Enter your password" required>
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -84,14 +181,19 @@
             <h2>Contact Us</h2>
             <form>
                 <label>Name:</label>
-                <input type="text" required>
+                <input type="text" placeholder="Your name" required>
                 <label>Email:</label>
-                <input type="email" required>
+                <input type="email" placeholder="Your email" required>
                 <label>Message:</label>
-                <textarea rows="5" required></textarea>
+                <textarea rows="5" placeholder="Your message" required></textarea>
                 <button type="submit">Send</button>
             </form>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div>Contact: <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></div>
+        <div style="margin-top:.5rem">WhatsApp: <a href="https://wa.me/123456789">+123456789</a></div>
+    </footer>
 </body>
 </html>

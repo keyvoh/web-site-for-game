@@ -7,8 +7,7 @@
     <style>
         h1{
             font-style: normal;
-            color: color-mix(in srgb-linear, color percentage, color percentage)
-            aliceblue
+            color: aliceblue;
         }
         :root{ --overlay: rgba(0,0,0,0.35); }
         *{box-sizing: border-box}
@@ -16,19 +15,17 @@
 
         /* Moving background on the page (change the filename below) */
         body.moving-bg{
-            /* Use a wide/tile image for smooth motion (no spaces in filename) */
-            background-image: url('wallpaper.jpg');
-            background-repeat: repeat-x; /* repeat horizontally so image scrolls continuously */
-            background-position: 0% 50%;
-            background-size: auto 120%; /* adjust height to cover nicely */
-            animation: bg-move 40s linear infinite;
+            /* Use a wide/tile image for smooth motion. If the first image fails to load,
+               the browser will fall back to wallpaper.svg (included in the project). */
+            background-image: url('pubg-image.jpg'), url('pubg image.jpg.jpg'), url('wallpaper.svg');
+            background-repeat: repeat-x, repeat-x, repeat-x;
+            background-position: 0% 50%, 0% 50%, 0% 50%;
+            background-size: auto 120%, auto 120%, cover;
+            /* Scroll (not fixed) so animation of background-position works on all devices */
+            background-attachment: scroll;
+            /* Faster animation so movement is noticeable */
+            animation: bg-move 20s linear infinite;
         }
-        body {
-  background-image: url('wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 
         @keyframes bg-move{
@@ -56,7 +53,6 @@
         .embed-responsive{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.12)}
         .embed-responsive iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-s
         /* About & Contact styles */
         .content-section{padding:2.5rem 1rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));}
         .container{max-width:1000px;margin:0 auto}
@@ -69,8 +65,10 @@ s
         #contact-form input,#contact-form textarea{width:100%;padding:.6rem .8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:#fff}
         #contact-form button{width:max-content}
         .form-note{font-size:.85rem;opacity:.85;margin-top:.5rem;color:rgba(255,255,255,0.75)}
-        h2{margin-bottom:1rem;
-        font-size:clamp(22px,4vw,32px);font-weight:700;
+        h2{
+            margin-bottom:1rem;
+            font-size:clamp(22px,4vw,32px);
+            font-weight:700;
         }
 
         /* Navigation bar styles */
@@ -130,10 +128,33 @@ s
             .navbar{flex-direction:column;gap:0.8rem;padding:0.6rem}
             .navbar-links{gap:0.8rem;flex-wrap:wrap;justify-content:center}
         }
-        ::selection class{
-            display: flex;
-            align-items:bottom;
+        ::selection {
+            color: #fff;
+            background: rgba(255,204,0,0.3);
         }
+
+        /* Download button styles */
+        .btn-download {
+            display: inline-block;
+            background: #0f9d58;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+        .btn-download:hover {
+            background: #0b8043;
+            transform: translateY(-2px);
+        }
+        /* Store badges */
+        .store-badges{display:flex;gap:0.75rem;justify-content:center;align-items:center;margin-top:0.75rem}
+        .store-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem .9rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:700}
+        .store-badge.play{background:linear-gradient(180deg,#34a853,#0f9d58)}
+        .store-badge.apple{background:linear-gradient(180deg,#111,#333)}
+        .store-badge svg{width:20px;height:20px;display:block}
+        @media (max-width:480px){.store-badges{flex-direction:column;gap:.5rem}}
     </style>
 </head>
 <body class="moving-bg">
@@ -164,16 +185,21 @@ s
             <p style="margin-top:1rem">
                 <a class="btn-download" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank" rel="noopener noreferrer" aria-label="Download PUBG Mobile from Google Play">Download on Google Play</a>
             </p>
+            <!-- Store badges: replace APP_STORE_URL with your iOS app link -->
+            <div class="store-badges" aria-hidden="false">
+                <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank" rel="noopener noreferrer">
+                    <!-- Play icon -->
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 2.7v18.6L20.5 12 3 2.7z" fill="#fff"/></svg>
+                    <span>Google Play</span>
+                </a>
+
+                <a class="store-badge apple" href="https://apps.apple.com/app/idYOUR_APP_ID" target="_blank" rel="noopener noreferrer">
+                    <!-- Apple icon -->
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.365 1.43c-.93.05-2.054.63-2.71 1.38-.58.67-1.08 1.73-.9 2.76 1.3.05 2.74-.66 3.46-1.47.66-.74 1.19-1.8 1.09-2.67-.07-.64-.45-1.18-.95-1.02z" fill="#fff"/><path d="M20.7 7.98c-1.05-.17-2.45.63-3.23.63-.82 0-2.13-.62-3.5-.61-1.8.01-3.5 1.05-4.44 1.05-2.3 0-4.98-2.34-8.28-2.34-.9 0-1.74.23-2.55.63C.65 8.06 2.42 13.8 5.8 16.8c1.03.86 2.28 1.83 3.8 1.80 1.45-.02 1.98-.77 3.72-.77 1.74 0 2.21.77 3.7.74 1.44-.02 2.34-.86 3.35-1.73 1.05-.93 1.49-1.83 2.34-3.31-5.2-1.99-3.6-8.19-1.03-9.15z" fill="#fff"/></svg>
+                    <span>App Store</span>
+                </a>
+            </div>
         </div>
     </main>
-
-
-    <section class="video-embed">
-        <h2 style="color:#131111">Watch the amazing gameplay</h2>
-        <div class="embed-responsive">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="PUBG Mobile Gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-   
+</body>
 </html>
